@@ -22,3 +22,5 @@ Route::get('test', function (Request $request) {
 });
 
 Route::post('/login', 'Auth\LoginController@login');
+
+Route::middleware('auth:api')->post('/user', 'UserController@store');
