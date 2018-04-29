@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\tasks;
+use App\Task;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -41,10 +41,10 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\tasks  $tasks
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(tasks $tasks)
+    public function show(tasks $task)
     {
         //
     }
@@ -52,10 +52,10 @@ class TasksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\tasks  $tasks
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(tasks $tasks)
+    public function edit(tasks $task)
     {
         //
     }
@@ -64,10 +64,10 @@ class TasksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\tasks  $tasks
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tasks $tasks)
+    public function update(Request $request, tasks $task)
     {
         //
     }
@@ -75,10 +75,10 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\tasks  $tasks
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tasks $tasks)
+    public function destroy(tasks $task)
     {
         //
     }

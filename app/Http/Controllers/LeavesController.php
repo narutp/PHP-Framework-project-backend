@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\leaves;
+use App\Leave;
 use Illuminate\Http\Request;
 
 class LeavesController extends Controller
@@ -41,10 +41,10 @@ class LeavesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\leaves  $leaves
+     * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function show(leaves $leaves)
+    public function show(leaves $leave)
     {
         //
     }
@@ -52,10 +52,10 @@ class LeavesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\leaves  $leaves
+     * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function edit(leaves $leaves)
+    public function edit(leaves $leave)
     {
         //
     }
@@ -64,10 +64,10 @@ class LeavesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\leaves  $leaves
+     * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, leaves $leaves)
+    public function update(Request $request, leaves $leave)
     {
         //
     }
@@ -75,10 +75,10 @@ class LeavesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\leaves  $leaves
+     * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function destroy(leaves $leaves)
+    public function destroy(leaves $leave)
     {
         //
     }
