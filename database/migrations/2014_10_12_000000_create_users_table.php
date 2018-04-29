@@ -17,9 +17,15 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('lineid')->unique();
+            $table->string('profile_picture');
+            $table->string('address');
+            $table->boolean('is_admin');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->unsignedInteger('supervisor_id');
+            $table->foreign('supervisor_id')->references('id')->on('users');
         });
     }
 
