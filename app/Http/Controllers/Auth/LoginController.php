@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Hash;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,35 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->get('email');
+        $password = $request->get('password');
+
+        $user = User::where('email', $email)->first();
+
+        if ($user and Hash::check($password, $user->password)) {
+            return [
+                'token' => $user->createToken('token')->accessToken,
+                'message' => 'Authenticated'
+            ];
+        }
+        return [
+            'message' => 'Email or Password is incorrect'
+        ];
+    }
+
+    public function refresh(Request $request)
+    {
+        return $this->response($this->loginProxy->attemptRefresh());
+    }
+
+    public function logout()
+    {
+        $this->loginProxy->logout();
+
+        return $this->response(null, 204);
     }
 }
