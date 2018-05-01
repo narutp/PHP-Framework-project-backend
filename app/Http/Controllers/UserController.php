@@ -20,7 +20,8 @@ class UserController extends Controller
                 'lineid' => $request->get('lineid'),
                 'profile_picture' => $request->get('profile_picture') or null,
                 'address' => $request->get('address'),
-                'is_admin' => $request->get('is_admin') === 'true'
+                'is_admin' => $request->get('is_admin') === 'true',
+                'type' => $request->get('type')
             ]);
             return $user;
         }

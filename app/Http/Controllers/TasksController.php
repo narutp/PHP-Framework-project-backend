@@ -14,7 +14,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        return Task::all();
     }
 
     /**
@@ -33,9 +33,16 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $task = Task::create([
+            'task-name' => $request->get('task-name'),
+            'description' => $request->get('description'),
+            'start_date' => $request->get('start_date'),
+            'end_date' => $request->get('end_date'),
+            'assignee_id' => $request->get('assignee_id'),
+            'assignor_id' => $request->get('assignor_id')
+        ]);
+        return $task;
     }
 
     /**
@@ -44,7 +51,7 @@ class TasksController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(tasks $task)
+    public function show(Task $task)
     {
         //
     }
@@ -55,7 +62,7 @@ class TasksController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(tasks $task)
+    public function edit(Task $task)
     {
         //
     }
@@ -67,7 +74,7 @@ class TasksController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tasks $task)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -78,8 +85,15 @@ class TasksController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tasks $task)
+    public function destroy(Task $task)
     {
         //
+    }
+
+    public function delete(Task $task)
+    {
+        $task->delete();
+
+        return response()->json(null, 204);
     }
 }

@@ -50,7 +50,8 @@ class LoginController extends Controller
         if ($user and Hash::check($password, $user->password)) {
             return [
                 'token' => $user->createToken('token')->accessToken,
-                'message' => 'Authenticated'
+                'message' => 'Authenticated',
+                'type' => $user->type
             ];
         }
         return [
