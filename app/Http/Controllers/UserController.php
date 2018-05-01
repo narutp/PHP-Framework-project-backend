@@ -12,6 +12,7 @@ class UserController extends Controller
         if (User::where(['email' => $request->get('email')])->first()) {
             return ['message' => 'email is already used'];
         }
+        // return $request->get('name');
         if ($request->user()->is_admin) {
             $user = User::create([
                 'name' => $request->get('name'),
