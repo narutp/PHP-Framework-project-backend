@@ -21,7 +21,8 @@ Route::get('test', function (Request $request) {
     return 'Hi';
 });
 
-Route::post('/task', 'TasksController@store');
+Route::get('/tasks', 'TasksController@index');
+Route::post('/create_task', 'TasksController@store');
 Route::delete('/task', 'TasksController@delete');
 
 Route::post('/login', 'Auth\LoginController@login');

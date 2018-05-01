@@ -35,7 +35,7 @@ class TasksController extends Controller
      */
     public function store(Request $request) {
         $task = Task::create([
-            'task-name' => $request->get('task-name'),
+            'task_name' => $request->get('task_name'),
             'description' => $request->get('description'),
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date'),
