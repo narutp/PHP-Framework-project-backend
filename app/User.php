@@ -29,4 +29,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function subordinates()
+    {
+        return $this->hasMany('App\User', 'supervisor_id');
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsTo('App\User', 'supervisor_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task', 'assignee_id');
+    }
 }

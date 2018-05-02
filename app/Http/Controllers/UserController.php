@@ -64,5 +64,10 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
+
+    public function subordinateTask(Request $request)
+    {
+        return $request->user()->subordinates()->with('tasks')->get();
+    }
 }
 

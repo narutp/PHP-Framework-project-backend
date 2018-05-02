@@ -34,6 +34,7 @@ Route::middleware('auth:api')->post('/user', 'UserController@store');
 Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
 Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColleague');
+Route::middleware('auth:api')->get('/supervisor/tasks', 'UserController@subordinateTask');
 
 Route::apiResource('leave', 'LeavesController');
 Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
