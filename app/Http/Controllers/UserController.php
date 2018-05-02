@@ -91,5 +91,14 @@ class UserController extends Controller
     public function show(User $user) {
         return $user;
     }
+
+    public function setDepartment(Request $request) {
+        if ($request->user()->is_admin) {
+            $user = User::where(['id' => $request->get('id')])->first();
+            $user->update($request->only(['department']));
+            return $user;
+        }
+        return ['message' => 'Require admin access to create a user'];
+    }
 }
 

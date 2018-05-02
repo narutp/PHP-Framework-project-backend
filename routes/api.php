@@ -38,6 +38,7 @@ Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColle
 Route::middleware('auth:api')->get('/supervisor/tasks', 'UserController@subordinateTask');
 Route::middleware('auth:api')->put('/user/set_roll', 'UserController@setRoll');
 Route::middleware('auth:api')->get('/supervisor/leaves', 'LeavesController@leaveHistory');
+Route::middleware('auth:api')->put('/user/set_department', 'UserController@setDepartment');
 
 
 Route::apiResource('leave', 'LeavesController');
