@@ -32,4 +32,9 @@ Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
 Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColleague');
 
-Route::middleware('auth:api')->post('/leave', 'LeaveController@store');
+Route::apiResource('leave', 'LeavesController');
+Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
+Route::middleware('auth:api')->post('/leave/{leave}/approve', 'LeavesController@approve');
+Route::middleware('auth:api')->post('/leave/{leave}/reject', 'LeavesController@reject');
+Route::middleware('auth:api')->post('/leave/{leave}/cancel', 'LeavesController@cancel');
+

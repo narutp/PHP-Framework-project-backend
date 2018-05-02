@@ -14,7 +14,7 @@ class LeavesController extends Controller
      */
     public function index()
     {
-        //
+        return Leave::get();
     }
 
     /**
@@ -53,7 +53,7 @@ class LeavesController extends Controller
      */
     public function show(Leave $leave)
     {
-        //
+        return $leave;
     }
 
     /**
@@ -88,5 +88,45 @@ class LeavesController extends Controller
     public function destroy(Leave $leave)
     {
         //
+    }
+    
+    public function approve(Request $request, Leave $leave)
+    {
+        $supervisor = $request->user();
+        $subordinate = $leave->user();
+
+        if ($supervisor->id !== $subordinate->supervisor_id) {
+            return false;
+        }
+
+        return response()->json($leave->update([
+            'type' => 'approved'
+        ]), 200);
+    }
+    
+    public function reject(Request $request, Leave $leave)
+    {
+        $supervisor = $request->user();
+        $subordinate = $leave->user();
+    
+        if ($supervisor->id !== $subordinate->supervisor_id) {
+            return false;
+        }
+    
+        return response()->json($leave->update([
+            'type' => 'rejected'
+        ]), 200);
+    }
+
+    public function cancel(Request $request, Leave $leave)
+    {
+        $subordinate = $leave->user();
+        if ($subordinate->first()->id !== $request->user()->id) {
+            return false;
+        }
+
+        return response()->json($leave->update([
+            'type' => 'cancelled'
+        ]), 200);
     }
 }
