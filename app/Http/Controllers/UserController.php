@@ -66,5 +66,14 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
+
+    public function setRoll(Request $request) {
+        if ($request->user()->is_admin) {
+            $user = User::where(['id' => $request->get('id')])->first();
+            $user->update($request->only(['type']));
+            return $user;
+        }
+        return ['message' => 'Require admin access to create a user'];
+    }
 }
 
