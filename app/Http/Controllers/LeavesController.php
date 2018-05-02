@@ -133,8 +133,14 @@ class LeavesController extends Controller
  
     public function leaveHistory(Request $request)
     {
-        $subordinate = $request->user()->subordinates()->with('leaves')->get();
-        return $subordinate;
+        $subordinate = $request->user()->subordinates()->with('leaves.user')->get();
+        $leaves = [];
+        foreach ($subordinate as $user) {
+            foreach ($user->leaves as $leave) {
+                array_push($leaves, $leave);
+            }
+        }
+        return $leaves;
     }
 
 }
