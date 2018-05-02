@@ -39,6 +39,7 @@ Route::middleware('auth:api')->get('/supervisor/tasks', 'UserController@subordin
 Route::middleware('auth:api')->put('/user/set_roll', 'UserController@setRoll');
 Route::middleware('auth:api')->get('/supervisor/leaves', 'LeavesController@leaveHistory');
 
+
 Route::apiResource('leave', 'LeavesController');
 Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
 Route::middleware('auth:api')->post('/leave/{leave}/approve', 'LeavesController@approve');
