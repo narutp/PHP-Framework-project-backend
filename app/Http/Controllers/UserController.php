@@ -71,5 +71,14 @@ class UserController extends Controller
     {
         return $request->user()->subordinates()->with('tasks')->get();
     }
+    
+    public function setRoll(Request $request) {
+        if ($request->user()->is_admin) {
+            $user = User::where(['id' => $request->get('id')])->first();
+            $user->update($request->only(['type']));
+            return $user;
+        }
+        return ['message' => 'Require admin access to create a user'];
+    }
 }
 
