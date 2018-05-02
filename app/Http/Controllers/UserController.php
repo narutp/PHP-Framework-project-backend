@@ -69,7 +69,14 @@ class UserController extends Controller
 
     public function subordinateTask(Request $request)
     {
-        return $request->user()->subordinates()->with('tasks')->get();
+        $users = $request->user()->subordinates()->with('tasks.user')->get();
+        $tasks = [];
+        foreach ($users as $user) {
+            foreach ($user->tasks as $task) {
+                array_push($tasks, $task);
+            }
+        }
+        return $tasks;
     }
     
     public function setRoll(Request $request) {
