@@ -28,4 +28,4 @@ Route::delete('/task', 'TasksController@delete');
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::middleware('auth:api')->post('/user', 'UserController@store');
-Route::get('/user', 'UserController@index');
+Route::get('/users', 'UserController@index');
