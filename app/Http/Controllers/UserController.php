@@ -53,4 +53,15 @@ class UserController extends Controller
     public function indexColleague(Request $request) {
         return User::where('supervisor_id', $request->user()->supervisor_id)->get();
     }
+    
+    public function update(Request $request, User $user)
+    {
+    //   $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+
+    //   return $user;
+        $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+
+        return response()->json($user, 200);
+    }
 }
+
