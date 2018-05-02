@@ -8,6 +8,23 @@ use App\User as User;
 
 class UserController extends Controller
 {
+    public function index(Request $request) 
+    {
+        $type = $request->get('type');
+        $type = strtolower($type);
+        if ($type === 'admin') {
+            $users = User::where('is_admin', true)->get();
+        } else if ($type === 'supervisor') {
+            $users = User::where('type', 'supervisor')->get();
+        } else if ($type === 'subordinate') {
+            $users = User::where('type', 'subordinate')->get();
+        } else {
+            $users = User::get();
+        }
+
+        return $users;
+    }
+
     public function store(Request $request) {
         if (User::where(['email' => $request->get('email')])->first()) {
             return ['message' => 'email is already used'];
