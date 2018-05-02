@@ -39,7 +39,9 @@ class UserController extends Controller
                 'profile_picture' => $request->get('profile_picture') or null,
                 'address' => $request->get('address'),
                 'is_admin' => $request->get('is_admin') === 'true',
-                'type' => $request->get('type')
+                'type' => $request->get('type'),
+                'facebook' => $request->get('facebook'),
+                'phone_number' => $request->get('phone_number')
             ]);
             return $user;
         }
