@@ -21,9 +21,12 @@ Route::get('test', function (Request $request) {
     return 'Hi';
 });
 
+Route::apiResource('user', 'UserController');
+
 Route::get('/tasks', 'TasksController@index');
 Route::post('/create_task', 'TasksController@store');
 Route::delete('/task', 'TasksController@delete');
+Route::middleware('auth:api')->put('/user/{user}', 'UserController@update');
 
 Route::post('/login', 'Auth\LoginController@login');
 

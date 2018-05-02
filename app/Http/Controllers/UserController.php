@@ -45,4 +45,14 @@ class UserController extends Controller
         }
         return ['message' => 'Require admin access to create a user'];
     }
+
+    public function update(Request $request, User $user)
+    {
+    //   $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+
+    //   return $user;
+        $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+
+        return response()->json($user, 200);
+    }
 }
