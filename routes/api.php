@@ -30,7 +30,7 @@ Route::middleware('auth:api')->put('/user', 'UserController@update');
 
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::resource('user', 'UserController')->only(['show']);
+// Route::resource('user', 'UserController')->only(['show']);
 Route::middleware('auth:api')->post('/user', 'UserController@store');
 Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
