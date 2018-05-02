@@ -50,4 +50,7 @@ class UserController extends Controller
         return User::where('supervisor_id', $request->user()->id)->get();
     }
 
+    public function indexColleague(Request $request) {
+        return User::where('supervisor_id', $request->user()->supervisor_id)->get();
+    }
 }

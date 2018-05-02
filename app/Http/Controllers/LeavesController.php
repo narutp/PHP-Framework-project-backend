@@ -35,7 +35,14 @@ class LeavesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Leave::create([
+            'status' => 'requested',
+            'type' => $request->get('type'),
+            'start_date' => $request->get('start_date'),
+            'end_date' => $request->get('end_date'),
+            'substitute_id' => $request->get('substitute_id'),
+            'user_id' => $request->user()->id
+        ]);
     }
 
     /**
@@ -44,7 +51,7 @@ class LeavesController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function show(leaves $leave)
+    public function show(Leave $leave)
     {
         //
     }
@@ -55,7 +62,7 @@ class LeavesController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function edit(leaves $leave)
+    public function edit(Leave $leave)
     {
         //
     }
@@ -67,7 +74,7 @@ class LeavesController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, leaves $leave)
+    public function update(Request $request, Leave $leave)
     {
         //
     }
@@ -78,7 +85,7 @@ class LeavesController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function destroy(leaves $leave)
+    public function destroy(Leave $leave)
     {
         //
     }

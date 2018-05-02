@@ -30,3 +30,6 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::middleware('auth:api')->post('/user', 'UserController@store');
 Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
+Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColleague');
+
+Route::middleware('auth:api')->post('/leave', 'LeaveController@store');
