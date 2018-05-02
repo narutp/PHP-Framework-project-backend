@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Leave;
+use App\User;
 use Illuminate\Http\Request;
 
 class LeavesController extends Controller
@@ -129,4 +130,11 @@ class LeavesController extends Controller
             'type' => 'cancelled'
         ]), 200);
     }
+ 
+    public function leaveHistory(Request $request)
+    {
+        $subordinate = $request->user()->subordinates()->with('leaves')->get();
+        return $subordinate;
+    }
+
 }

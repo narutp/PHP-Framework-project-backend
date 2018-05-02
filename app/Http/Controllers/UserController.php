@@ -87,5 +87,9 @@ class UserController extends Controller
         }
         return ['message' => 'Require admin access to create a user'];
     }
+
+    public function show(User $user) {
+        return $user;
+    }
 }
 

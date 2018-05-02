@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Task', 'assignee_id');
     }
+
+    public function leaves()
+    {
+        return $this->hasMany('App\Leave', 'user_id');
+    }
 }

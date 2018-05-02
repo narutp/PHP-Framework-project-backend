@@ -30,12 +30,14 @@ Route::middleware('auth:api')->put('/user', 'UserController@update');
 
 Route::post('/login', 'Auth\LoginController@login');
 
+Route::resource('user', 'UserController')->only(['show']);
 Route::middleware('auth:api')->post('/user', 'UserController@store');
 Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
 Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColleague');
 Route::middleware('auth:api')->get('/supervisor/tasks', 'UserController@subordinateTask');
 Route::middleware('auth:api')->put('/user/set_roll', 'UserController@setRoll');
+Route::middleware('auth:api')->get('/supervisor/leaves', 'LeavesController@leaveHistory');
 
 Route::apiResource('leave', 'LeavesController');
 Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
