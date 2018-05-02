@@ -40,7 +40,7 @@ class TasksController extends Controller
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date'),
             'assignee_id' => $request->get('assignee_id'),
-            'assignor_id' => $request->get('assignor_id')
+            'assignor_id' => $request->user()->id
         ]);
         return $task;
     }
