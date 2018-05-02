@@ -45,4 +45,9 @@ class UserController extends Controller
         }
         return ['message' => 'Require admin access to create a user'];
     }
+ 
+    public function indexSubordinates(Request $request) { 
+        return User::where('supervisor_id', $request->user()->id)->get();
+    }
+
 }
