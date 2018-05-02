@@ -54,12 +54,13 @@ class UserController extends Controller
         return User::where('supervisor_id', $request->user()->supervisor_id)->get();
     }
     
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
     //   $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
 
     //   return $user;
-        $user->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+
+        $user = $request->user()->update($request->only(['name', 'address', 'facebook', 'phone_number']));
 
         return response()->json($user, 200);
     }
