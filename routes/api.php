@@ -17,14 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('test', function (Request $request) {
-    return 'Hi';
-});
-
 // Route::apiResource('user', 'UserController');
 
 Route::get('/tasks', 'TasksController@index');
-Route::post('/create_task', 'TasksController@store');
+Route::middleware('auth:api')->post('/create_task', 'TasksController@store');
 Route::delete('/task', 'TasksController@delete');
 Route::middleware('auth:api')->put('/user', 'UserController@update');
 Route::middleware('auth:api')->get('/task/incomplete', 'TasksController@indexIncomplete');
