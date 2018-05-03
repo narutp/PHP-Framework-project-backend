@@ -4,3 +4,6 @@
 - run `php artisan migrate`
 - run `php artisan passport:install`
 - run `php artisan serve` to open the server
+
+## Sample data
+- `sampledata.sql` -- the data are dumped from the database after the presentation
