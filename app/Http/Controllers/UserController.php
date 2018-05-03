@@ -53,7 +53,7 @@ class UserController extends Controller
     }
 
     public function indexColleague(Request $request) {
-        return User::where('supervisor_id', $request->user()->supervisor_id)->get();
+        return User::where('supervisor_id', $request->user()->supervisor_id)->where('id', '!=', $request->user()->id)->get();
     }
     
     public function update(Request $request)
