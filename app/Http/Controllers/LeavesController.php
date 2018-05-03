@@ -13,9 +13,9 @@ class LeavesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Leave::get();
+        return $request->user()->leaves()->orderBy('id', 'desc')->get();
     }
 
     /**
