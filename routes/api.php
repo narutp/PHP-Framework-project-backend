@@ -27,6 +27,7 @@ Route::get('/tasks', 'TasksController@index');
 Route::post('/create_task', 'TasksController@store');
 Route::delete('/task', 'TasksController@delete');
 Route::middleware('auth:api')->put('/user', 'UserController@update');
+Route::middleware('auth:api')->get('/task/incomplete', 'TasksController@indexIncomplete');
 
 Route::post('/login', 'Auth\LoginController@login');
 
@@ -42,6 +43,7 @@ Route::middleware('auth:api')->put('/user/set_department', 'UserController@setDe
 
 
 Route::apiResource('leave', 'LeavesController');
+Route::middleware('auth:api')->get('/leaves', 'LeavesController@index');
 Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
 Route::middleware('auth:api')->post('/leave/{leave}/approve', 'LeavesController@approve');
 Route::middleware('auth:api')->post('/leave/{leave}/reject', 'LeavesController@reject');

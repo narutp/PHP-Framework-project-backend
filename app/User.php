@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Leave', 'user_id');
     }
+
+    public function leaveSubstitute()
+    {
+        return $this->hasMany('App\Leave', 'substitute_id');
+    }
 }

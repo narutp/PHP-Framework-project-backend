@@ -14,4 +14,9 @@ class Leave extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function substitute()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

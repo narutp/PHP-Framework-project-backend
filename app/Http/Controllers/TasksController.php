@@ -96,4 +96,10 @@ class TasksController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function indexIncomplete(Request $request)
+    {
+        return $request->user()->tasks()->where('end_date', '>=', 'now()')->get();
+    }
+
 }
