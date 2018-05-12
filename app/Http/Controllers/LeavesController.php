@@ -36,6 +36,15 @@ class LeavesController extends Controller
      */
     public function store(Request $request)
     {
+        $requester = $request->user(); 
+
+        if ($count($requester->tasks()->get()) > 0) {
+            return [
+                'success' => false,
+                'message' => 'You need to reassign tasks before create a leave request'
+            ];
+        }
+
         return Leave::create([
             'status' => 'requested',
             'type' => $request->get('type'),
