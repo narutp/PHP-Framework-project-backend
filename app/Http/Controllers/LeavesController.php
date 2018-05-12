@@ -101,7 +101,7 @@ class LeavesController extends Controller
         }
 
         return response()->json($leave->update([
-            'type' => 'approved'
+            'status' => 'approved'
         ]), 200);
     }
     
@@ -115,7 +115,7 @@ class LeavesController extends Controller
         }
     
         return response()->json($leave->update([
-            'type' => 'rejected'
+            'status' => 'rejected'
         ]), 200);
     }
 
@@ -127,7 +127,7 @@ class LeavesController extends Controller
         }
 
         return response()->json($leave->update([
-            'type' => 'cancelled'
+            'status' => 'cancelled'
         ]), 200);
     }
  
