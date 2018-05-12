@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -53,7 +54,7 @@ class TasksController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return $task;
     }
 
     /**
@@ -102,4 +103,63 @@ class TasksController extends Controller
         return $request->user()->tasks()->where('end_date', '>=', 'now()')->get();
     }
 
+    public function reassign(Request $request, Task $task, User $user)
+    {
+        $requester = $request->user();
+
+        $requester_supervisor = $requester->supervisor()->first();
+        $reassignee_supervisor = $user->supervisor()->first();
+        
+        if ($requester_supervisor === null && $reassignee_supervisor === null) {
+            return ['success' => false];
+        }
+
+        if ($requester_supervisor->id !== $reassignee_supervisor->id) {
+            return ['success' => false];
+        }
+
+        return [
+            'success' => $task->update([
+                'reassignee_id' => $requester->id
+            ])
+        ];
+    }
+
+    public function indexReassigned(Request $request)
+    {
+        $requester = $request->user();
+        
+        return $requester->reassignTask()->get();
+    }
+
+    public function approveReassign(Request $request, Task $task)
+    {
+        $requester = $request->user();
+
+        if ($requester->id === $task->reassignee_id or $task->reassignee_id === null) {
+            return ['success' => false];
+        }
+
+        return [
+            'success' => $task->update([
+                'reassignee_id' => null,
+                'assignee_id' => $requester->id
+            ])
+        ];
+    }
+    
+    public function rejectReassign(Request $request, Task $task)
+    {
+        $request = $request->user();
+
+        if ($requester->id === $task->reassignee_id or $task->reassignee_id === null) {
+            return ['success' => false];
+        }
+
+        return [
+            'success' => $task->update([
+                'reassignee_id' => null
+            ])
+        ];
+    }
 }

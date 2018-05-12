@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Leave', 'substitute_id');
     }
+
+    public function reassignTask()
+    {
+        return $this->hasMany('App\Task', 'reassignee_id')
+    }
 }
