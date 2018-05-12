@@ -94,7 +94,7 @@ class LeavesController extends Controller
     public function approve(Request $request, Leave $leave)
     {
         $supervisor = $request->user();
-        $subordinate = $leave->user();
+        $subordinate = $leave->user()->first();
 
         if ($supervisor->id !== $subordinate->supervisor_id) {
             return false;
@@ -108,7 +108,7 @@ class LeavesController extends Controller
     public function reject(Request $request, Leave $leave)
     {
         $supervisor = $request->user();
-        $subordinate = $leave->user();
+        $subordinate = $leave->user()->first();
     
         if ($supervisor->id !== $subordinate->supervisor_id) {
             return false;
@@ -121,7 +121,7 @@ class LeavesController extends Controller
 
     public function cancel(Request $request, Leave $leave)
     {
-        $subordinate = $leave->user();
+        $subordinate = $leave->user()->first();
         if ($subordinate->first()->id !== $request->user()->id) {
             return false;
         }
