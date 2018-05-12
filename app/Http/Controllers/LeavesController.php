@@ -100,9 +100,11 @@ class LeavesController extends Controller
             return false;
         }
 
-        return response()->json($leave->update([
-            'status' => 'approved'
-        ]), 200);
+        return [
+            "success" => $leave->update([
+                'status' => 'approved'
+            ])
+        ];
     }
     
     public function reject(Request $request, Leave $leave)
@@ -114,9 +116,11 @@ class LeavesController extends Controller
             return false;
         }
     
-        return response()->json($leave->update([
-            'status' => 'rejected'
-        ]), 200);
+        return [
+            "success" => $leave->update([
+                'status' => 'rejected'
+            ])
+        ];
     }
 
     public function cancel(Request $request, Leave $leave)
@@ -126,9 +130,11 @@ class LeavesController extends Controller
             return false;
         }
 
-        return response()->json($leave->update([
-            'status' => 'cancelled'
-        ]), 200);
+        return [
+            "success" => $leave->update([
+                'status' => 'cancelled'
+            ])
+        ];
     }
  
     public function leaveHistory(Request $request)
