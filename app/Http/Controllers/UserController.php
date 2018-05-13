@@ -62,7 +62,7 @@ class UserController extends Controller
 
     //   return $user;
 
-        $user = $request->user()->update($request->only(['name', 'address', 'facebook', 'phone_number']));
+        $user = $request->user()->update($request->only(['name', 'address', 'facebook', 'phone_number', 'profile_picture']));
 
         return response()->json($user, 200);
     }
