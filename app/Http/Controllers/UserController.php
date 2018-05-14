@@ -79,13 +79,22 @@ class UserController extends Controller
         return $tasks;
     }
     
-    public function setRoll(Request $request) {
+    public function setRole(Request $request) {
         if ($request->user()->is_admin) {
             $user = User::where(['id' => $request->get('id')])->first();
             $user->update($request->only(['type']));
             return $user;
         }
-        return ['message' => 'Require admin access to create a user'];
+        return ['message' => 'Require admin access to set role'];
+    }
+
+    public function setHierarchy(Request $request) {
+        if ($request->user()->is_admin) {
+            $user = User::where(['id' => $request->get('user_id')])->first();
+            $user->update($request->only(['supervisor_id']));
+            return $user;
+        }
+        return ['message' => 'Require admin access to set hierarchy'];    
     }
 
     public function show(User $user) {
@@ -98,7 +107,7 @@ class UserController extends Controller
             $user->update($request->only(['department']));
             return $user;
         }
-        return ['message' => 'Require admin access to create a user'];
+        return ['message' => 'Require admin access to set a department'];
     }
 }
 

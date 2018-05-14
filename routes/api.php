@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
+Route::get('/tasks', 'TasksController@index');
 Route::post('/login', 'Auth\LoginController@login');
 
 // Route::resource('user', 'UserController')->only(['show']);
@@ -29,7 +29,8 @@ Route::middleware('auth:api')->post('/user', 'UserController@store');
 Route::middleware('auth:api')->get('/user/subordinates', 'UserController@indexSubordinates');
 Route::middleware('auth:api')->get('/user/colleague', 'UserController@indexColleague');
 Route::middleware('auth:api')->get('/supervisor/tasks', 'UserController@subordinateTask');
-Route::middleware('auth:api')->put('/user/set_roll', 'UserController@setRoll');
+Route::middleware('auth:api')->put('/user/set_role', 'UserController@setRole');
+Route::middleware('auth:api')->put('/user/set_hierarchy', 'UserController@setHierarchy');
 Route::middleware('auth:api')->get('/supervisor/leaves', 'LeavesController@leaveHistory');
 Route::middleware('auth:api')->put('/user/set_department', 'UserController@setDepartment');
 
