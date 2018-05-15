@@ -34,7 +34,7 @@ Route::middleware('auth:api')->put('/user/set_hierarchy', 'UserController@setHie
 Route::middleware('auth:api')->get('/supervisor/leaves', 'LeavesController@leaveHistory');
 Route::middleware('auth:api')->put('/user/set_department', 'UserController@setDepartment');
 
-Route::apiResource('tasks', 'TasksController');
+// Route::apiResource('tasks', 'TasksController');
 Route::delete('/task', 'TasksController@delete');
 Route::middleware('auth:api')->post('/create_task', 'TasksController@store');
 Route::middleware('auth:api')->get('/task/incomplete', 'TasksController@indexIncomplete');

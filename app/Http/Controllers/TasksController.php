@@ -117,10 +117,10 @@ class TasksController extends Controller
         if ($requester_supervisor->id !== $reassignee_supervisor->id) {
             return ['success' => false];
         }
-
+        
         return [
             'success' => $task->update([
-                'reassignee_id' => $requester->id
+                'reassignee_id' => $user->id
             ])
         ];
     }
