@@ -100,7 +100,7 @@ class TasksController extends Controller
 
     public function indexIncomplete(Request $request)
     {
-        return $request->user()->tasks()->where('end_date', '>=', 'now()')->get();
+        return $request->user()->tasks()->get();
     }
 
     public function reassign(Request $request, Task $task, User $user)

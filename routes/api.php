@@ -22,7 +22,7 @@ Route::get('/tasks', 'TasksController@index');
 Route::post('/login', 'Auth\LoginController@login');
 
 // Route::resource('user', 'UserController')->only(['show']);
-Route::apiResource('user', 'UserController');
+// Route::apiResource('user', 'UserController');
 Route::get('/users', 'UserController@index');
 Route::middleware('auth:api')->put('/user', 'UserController@update');
 Route::middleware('auth:api')->post('/user', 'UserController@store');
