@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "77845f3d3fe8292e0794b1a5ba6e23bd",
+    "content-hash": "614646be25030808fca94759abc03366",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -441,6 +441,60 @@
                 "validator"
             ],
             "time": "2018-04-10T10:11:19+00:00"
+        },
+        {
+            "name": "ellumilel/php-excel-writer",
+            "version": "v0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ellumilel/php-excel-writer.git",
+                "reference": "0f9e40f9784629b2b3dd062498195258156bb452"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ellumilel/php-excel-writer/zipball/0f9e40f9784629b2b3dd062498195258156bb452",
+                "reference": "0f9e40f9784629b2b3dd062498195258156bb452",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4|^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ellumilel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Denis Tikhonov",
+                    "email": "ozy@mailserver.ru",
+                    "homepage": "https://github.com/Ellumilel/php-excel-writer",
+                    "role": "Author"
+                }
+            ],
+            "description": "Big data Excel writer with small memory consuming",
+            "homepage": "https://github.com/Ellumilel/php-excel-writer",
+            "keywords": [
+                "big-data",
+                "excel",
+                "excel-downloader",
+                "excel-writer",
+                "export",
+                "php-excel",
+                "php-excel-writer",
+                "spreadsheet",
+                "xlsx"
+            ],
+            "time": "2017-12-07T18:53:02+00:00"
         },
         {
             "name": "erusev/parsedown",

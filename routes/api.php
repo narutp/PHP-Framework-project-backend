@@ -43,10 +43,11 @@ Route::middleware('auth:api')->get('/tasks/reassigned', 'TasksController@indexRe
 Route::middleware('auth:api')->post('/task/{task}/approve_reassigned', 'TasksController@approveReassign');
 Route::middleware('auth:api')->post('/task/{task}/reject_reassigned', 'TasksController@rejectReassign');
 
-Route::apiResource('leave', 'LeavesController');
+// Route::apiResource('leave', 'LeavesController');
 Route::middleware('auth:api')->get('/leaves', 'LeavesController@index');
 Route::middleware('auth:api')->post('/leave', 'LeavesController@store');
 Route::middleware('auth:api')->post('/leave/{leave}/approve', 'LeavesController@approve');
 Route::middleware('auth:api')->post('/leave/{leave}/reject', 'LeavesController@reject');
 Route::middleware('auth:api')->post('/leave/{leave}/cancel', 'LeavesController@cancel');
 
+Route::middleware('auth:api')->get('/export-data', 'AdminController@generateSheet');

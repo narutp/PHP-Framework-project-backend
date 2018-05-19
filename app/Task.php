@@ -14,4 +14,12 @@ class Task extends Model
     {
         return $this->belongsto('App\User', 'assignee_id');
     }
+
+    public function assignor() {
+        return $this->belongsTo('App\User', 'assignor_id');
+    }
+
+    public function reassignee() {
+        return $this->belongsTo('App\User', 'reassignee_id');
+    }
 }
