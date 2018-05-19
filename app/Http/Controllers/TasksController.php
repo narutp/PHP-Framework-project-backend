@@ -120,7 +120,7 @@ class TasksController extends Controller
         
         return [
             'success' => $task->update([
-                'reassignee_id' => $user->id
+                'assignee_id' => $user->id
             ])
         ];
     }
