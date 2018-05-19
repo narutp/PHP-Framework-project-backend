@@ -45,14 +45,16 @@ class LeavesController extends Controller
             ];
         }
 
-        return Leave::create([
-            'status' => 'requested',
-            'type' => $request->get('type'),
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date'),
-            'substitute_id' => $request->get('substitute_id'),
-            'user_id' => $request->user()->id
-        ]);
+        return [
+            'success' => Leave::create([
+                'status' => 'requested',
+                'type' => $request->get('type'),
+                'start_date' => $request->get('start_date'),
+                'end_date' => $request->get('end_date'),
+                'substitute_id' => $request->get('substitute_id'),
+                'user_id' => $request->user()->id
+            ])
+        ];
     }
 
     /**
