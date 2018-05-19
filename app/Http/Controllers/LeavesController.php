@@ -38,7 +38,7 @@ class LeavesController extends Controller
     {
         $requester = $request->user(); 
 
-        if ($count($requester->tasks()->where('end_date', '>', date('Y-m-d'))->get()) > 0) {
+        if (count($requester->tasks()->where('end_date', '>', date('Y-m-d'))->get()) > 0) {
             return [
                 'success' => false,
                 'message' => 'You need to reassign tasks before create a leave request'
