@@ -26,7 +26,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generateSheet()
+    public function generateSheet(Request $request)
     {
       $requester = $request->user();
       if (!$requester->is_admin) { return response(["message" => "unauthorized"], 401); }
