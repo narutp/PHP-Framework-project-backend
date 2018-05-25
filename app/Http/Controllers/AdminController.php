@@ -75,12 +75,13 @@ class AdminController extends Controller
         'profile_picture' => 'string',
         'address' => 'string'
       ]);
+      
       foreach ($subordinates as $subordinate) {
         $wExcel->writeSheetRow('Subordinates', [
           $subordinate->id,
           $subordinate->name,
           $subordinate->department,
-          $subordinate->supervisor->firstname." ".$subordinate->supervisor->lastname,
+          $subordinate->supervisor === null ? "" : $subordinate->supervisor->name,
           $subordinate->email,
           $subordinate->phone,
           $subordinate->lineid,
